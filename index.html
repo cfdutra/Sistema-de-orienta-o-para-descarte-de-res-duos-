@@ -1,27 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descarte Consciente</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Descarte Consciente ♻️</h1>
-        <p>Selecione o tipo de resíduo abaixo para encontrar o local de descarte correto mais próximo de você.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoRota Maringá</title>
 
-        <div class="botoes-container">
-            <button onclick="buscarLocais('pilha')" class="btn">🔋 Pilhas e Baterias</button>
-            <button onclick="buscarLocais('oleo')" class="btn">🛢️ Óleo de Cozinha</button>
-            <button onclick="buscarLocais('eletronico')" class="btn">💻 Lixo Eletrônico</button>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="eco-header">
+        <h1>EcoRota Maringá</h1>
+        <p class="subtitle">
+          Gestão inteligente e responsável de resíduos na cidade
+        </p>
+      </header>
+
+      <main class="eco-main">
+        <div class="botoes-grid">
+          <button onclick="buscarLocais('pilha')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M16,20H8V6H16M16,4H14V2H10V4H8A2,2 0 0,0 6,6V20A2,2 0 0,0 8,22H16A2,2 0 0,0 18,20V6A2,2 0 0,0 16,4M15,10H9V12H15V10M15,14H9V16H15V14Z"
+              />
+            </svg>
+            <span>Pilhas e Baterias</span>
+          </button>
+
+          <button onclick="buscarLocais('oleo')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,6A3,3 0 0,0 9,9C9,10.5 10,11.5 11,12C10,13 10.5,14.5 12.5,14.5C14,14.5 14.5,13.5 14,12.5C15,12 15,10.5 15,9A3,3 0 0,0 12,6Z"
+              />
+            </svg>
+            <span>Óleo de Cozinha</span>
+          </button>
+
+          <button onclick="buscarLocais('eletronico')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z"
+              />
+            </svg>
+            <span>Eletrônicos</span>
+          </button>
+
+          <button onclick="buscarLocais('vidro')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M12 2c-1.1 0-2 .9-2 2v3.28c-.59.39-1 .14-1 1.14V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V8.42c0-1-.41-.75-1-1.14V4c0-1.1-.9-2-2-2h-2zm0 2h2v2h-2V4zm-2 5.5h6V20h-6V9.5z"
+              />
+            </svg>
+            <span>Vidros</span>
+          </button>
+
+          <button onclick="buscarLocais('lampada')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z"
+              />
+            </svg>
+            <span>Lâmpadas</span>
+          </button>
+
+          <button onclick="buscarLocais('pneu')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 1,1 4,12A8,8 0 0,1 12,4M12,7A5,5 0 1,0 17,12A5,5 0 0,0 12,7Z"
+              />
+            </svg>
+            <span>Pneus</span>
+          </button>
+
+          <button onclick="buscarLocais('medicamento')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M6,3H18A2,2 0 0,1 20,5V19A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V5A2,2 0 0,1 6,3M12,7A3,3 0 0,0 9,10C9,11.5 10,12.5 11,13V18H13V13C14,12.5 15,11.5 15,10A3,3 0 0,0 12,7Z"
+              />
+            </svg>
+            <span>Medicamentos</span>
+          </button>
+
+          <button onclick="buscarLocais('inservivel')" class="btn-eco">
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path
+                d="M21,10.16V5A2,2 0 0,0 19,3H5A2,2 0 0,0 3,5V10.16C2.37,10.61 2,11.36 2,12.2V18A2,2 0 0,0 4,20V21H6V20H18V21H20V20A2,2 0 0,0 22,18V12.2C22,11.36 21.63,10.61 21,10.16M6,5H18V8H6V5Z"
+              />
+            </svg>
+            <span>Móveis e Eletro</span>
+          </button>
         </div>
 
-        <div id="area-resultados" class="resultados">
-            <p class="mensagem-inicial">Os pontos de coleta aparecerão aqui.</p>
-        </div>
+        <section class="card resultados-card">
+          <h2>Pontos de Destinação</h2>
+
+          <div class="resultados-inner-box">
+            <div id="area-resultados">
+              <p class="placeholder-text">Resultados</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card flex-card">
+          <div class="card-text">
+            <h2>Conscientização</h2>
+            <p>
+              O descarte incorreto de resíduos contamina o solo, a água e coloca
+              a saúde pública em risco. Pequenas atitudes fazem grande
+              diferença: ao descartar corretamente, você protege o meio
+              ambiente, evita a poluição e ajuda a construir uma cidade mais
+              limpa e sustentável para todos.
+            </p>
+          </div>
+          <div class="ods-box">
+            <div class="ods-icon">🌍</div>
+            <div class="ods-text">
+              <span class="ods-label">Iniciativa Global da ONU</span>
+              <strong>ODS 12: Consumo e Produção Responsáveis</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="eco-footer">
+        <p>Copyright © 2026 EcoRota Maringá - Paraná</p>
+      </footer>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
